@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KraskalsAlgorithm", "KraskalsAlgorithm\KraskalsAlgorithm.csproj", "{FDE5F257-84C3-44F1-86CB-110671599EF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicClasses", "LogicClasses\LogicClasses.csproj", "{E3BC506B-FD04-47E0-A511-62F189CA7146}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FDE5F257-84C3-44F1-86CB-110671599EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE5F257-84C3-44F1-86CB-110671599EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE5F257-84C3-44F1-86CB-110671599EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE5F257-84C3-44F1-86CB-110671599EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3BC506B-FD04-47E0-A511-62F189CA7146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3BC506B-FD04-47E0-A511-62F189CA7146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3BC506B-FD04-47E0-A511-62F189CA7146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3BC506B-FD04-47E0-A511-62F189CA7146}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E603A28-7F6A-4D5E-B449-87E137F83076}
+	EndGlobalSection
+EndGlobal
