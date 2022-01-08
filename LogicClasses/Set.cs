@@ -1,17 +1,17 @@
-﻿using ArrayListClass;
+﻿using System.Collections.Generic;
 
-namespace GraphLogic
+namespace LogicClasses
 {
     public class Set
     {
         public Graph SetGraph;
-        public ArrayList<string> Vertices;
+        public List<string> Vertices;
 
         public Set(Edge edge)
         {
             SetGraph = new Graph(edge);
 
-            Vertices = new ArrayList<string>();
+            Vertices = new List<string>();
             Vertices.Add(edge.VertexA);
             Vertices.Add(edge.VertexB);
         }
@@ -19,7 +19,7 @@ namespace GraphLogic
         public void Union(Set set, Edge connectingEdge)
         {
             SetGraph.Add(set.SetGraph);
-            Vertices.Add(set.Vertices);
+            Vertices.AddRange(set.Vertices);
             SetGraph.Add(connectingEdge);
         }
 
@@ -32,11 +32,7 @@ namespace GraphLogic
 
         public bool Contains(string vertex)
         {
-            for (int i = 0; i < Vertices.GetLength(); i++)
-            {
-                if (Vertices.Get(i) == vertex) return true;
-            }
-            return false;
+            return Vertices.Contains(vertex);
         }
     }
 }

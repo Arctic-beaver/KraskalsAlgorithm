@@ -1,119 +1,113 @@
-﻿using LinkedListClass;
-using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 
-namespace GraphLogic
+namespace LogicClasses
 {
-    public class Graph
+    public class Graph : IEnumerable<Edge>
     {
-        private LinkedList<Edge> _graph;
+        private List<Edge> _graph;
 
         public Graph()
         {
-            _graph = new LinkedList<Edge>();
+            _graph = new List<Edge>();
         }
 
         public Graph(Edge val)
         {
-            _graph = new LinkedList<Edge>(val);
+            Edge[] value = new Edge[] { val };
+
+            _graph = new List<Edge>(value);
         }
 
         public Graph(Edge[] val)
         {
-            _graph = new LinkedList<Edge>(val);
+            _graph = new List<Edge>(val);
         }
 
-        public int GetLength() => _graph.GetLength();
+        public int GetLength() => _graph.Count;
         public bool Contains(Edge edge) => _graph.Contains(edge);
 
         public void Add(Graph graph)
         {
-            _graph.AddLast(graph._graph);
+            foreach (Edge edge in graph)
+            {
+                _graph.Add(edge);
+            }
         }
 
         public void Add(Edge edge)
         {
-            _graph.AddLast(edge);
+            _graph.Add(edge);
         }
 
         public int GetWeight()
         {
-            Node<Edge> shovel = _graph.GetFirstNode();
-            if (shovel == null) return 0;
             int weight = 0;
-
-            while (shovel != null)
+            foreach (Edge edge in _graph)
             {
-                weight += shovel.Data.EdgeWeight;
-                shovel = shovel.Next;
+                weight += edge.EdgeWeight;   
             }
             return weight;
         }
 
         public void ToSets(KraskalsAlgorithm storage)
         {
-            Node<Edge> shovel = _graph.GetFirstNode();
-            if (shovel == null) return;
-
-            while (shovel != null)
+            foreach (Edge edge in _graph)
             {
-                Set setA = storage.Contains(shovel.Data.VertexA);
-                Set setB = storage.Contains(shovel.Data.VertexB);
+                Set setA = storage.Find(edge.VertexA);
+                Set setB = storage.Find(edge.VertexB);
 
                 if (setA != null && setB == null)
                 {
-                    setA.AddEdge(shovel.Data);
+                    setA.AddEdge(edge);
                 }
                 else if (setA == null && setB != null)
                 {
-                    setB.AddEdge(shovel.Data);
+                    setB.AddEdge(edge);
                 }
                 else if (setA == null && setB == null)
                 {
-                    Set set = new Set(shovel.Data);
+                    Set set = new Set(edge);
                     storage.Sets.Add(set);
                 }
                 else if (setA != null && setB != null)
                 {
                     if (setA != setB)
                     {
-                        setA.Union(setB, shovel.Data);
-                        storage.Sets.RemoveFirst(setB);
+                        setA.Union(setB, edge);
+                        storage.Sets.Remove(setB);
                     }
                 }
-                shovel = shovel.Next;
             }
         }
 
         public override string ToString()
         {
-            Edge[] graph = _graph.ToArray();
             string result = string.Empty;
 
-            for (int i = 0; i < graph.Length; i++)
+            foreach (Edge edge in _graph)
             {
-                result += $"{graph[i].VertexA} {graph[i].VertexB} {graph[i].EdgeWeight}\n";
+                result += $"{edge.VertexA} {edge.VertexB} {edge.EdgeWeight}\n";
             }
 
             return result;
-        }
-
-        public void RemoveAt(int idx)
-        {
-            try
-            {
-                _graph.RemoveAt(idx);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
         }
 
         public void Sort()
         {
             Edge[] graph = _graph.ToArray();
             MergeSort.Sort(graph);
-            _graph = new LinkedList<Edge>(graph);
+            _graph = new List<Edge>(graph);
+        }
+
+        public IEnumerator<Edge> GetEnumerator()
+        {
+            return _graph.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _graph.GetEnumerator();
         }
     }
 }

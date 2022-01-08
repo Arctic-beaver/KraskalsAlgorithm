@@ -1,5 +1,5 @@
 ﻿
-namespace GraphLogic
+namespace LogicClasses
 {
     public class Edge
     {

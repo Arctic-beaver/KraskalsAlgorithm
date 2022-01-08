@@ -1,4 +1,4 @@
-﻿namespace GraphLogic
+﻿namespace LogicClasses
 {
     public static class MergeSort
     {
