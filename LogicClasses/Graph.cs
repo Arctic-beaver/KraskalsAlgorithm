@@ -19,9 +19,6 @@ namespace LogicClasses
             _graph = new List<Edge>(value);
         }
 
-        public int GetLength() => _graph.Count;
-        public bool Contains(Edge edge) => _graph.Contains(edge);
-
         public void Add(Graph graph)
         {
             foreach (Edge edge in graph)
