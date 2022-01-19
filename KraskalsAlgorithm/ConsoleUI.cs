@@ -46,8 +46,7 @@ namespace MinimumBackboneConsole
 
         public void Result(Graph graph)
         {
-            KraskalsAlgorithm algorithm = new KraskalsAlgorithm();
-            graph = algorithm.FindMinimumBackbone(graph);
+            graph = graph.FindMinimumSpanningTree();
             Console.WriteLine();
             Console.WriteLine("Minimum backbone: ");
             Console.Write(graph.ToString());

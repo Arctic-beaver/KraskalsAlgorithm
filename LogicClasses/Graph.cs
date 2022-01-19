@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LogicClasses
 {
@@ -42,35 +43,16 @@ namespace LogicClasses
             return weight;
         }
 
-        public void ToSets(KraskalsAlgorithm storage)
+        public Graph FindMinimumSpanningTree()
         {
+            Sort();
+            var disjointSets = new SystemOfDisjointSets();
             foreach (Edge edge in _graph)
             {
-                Set setA = storage.Find(edge.VertexA);
-                Set setB = storage.Find(edge.VertexB);
-
-                if (setA != null && setB == null)
-                {
-                    setA.AddEdge(edge);
-                }
-                else if (setA == null && setB != null)
-                {
-                    setB.AddEdge(edge);
-                }
-                else if (setA == null && setB == null)
-                {
-                    Set set = new Set(edge);
-                    storage.Sets.Add(set);
-                }
-                else if (setA != null && setB != null)
-                {
-                    if (setA != setB)
-                    {
-                        setA.Union(setB, edge);
-                        storage.Sets.Remove(setB);
-                    }
-                }
+                disjointSets.AddEdgeInSet(edge);
             }
+
+            return disjointSets.Sets.First().SetGraph;
         }
 
         public override string ToString()
