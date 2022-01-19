@@ -19,11 +19,6 @@ namespace LogicClasses
             _graph = new List<Edge>(value);
         }
 
-        public Graph(Edge[] val)
-        {
-            _graph = new List<Edge>(val);
-        }
-
         public int GetLength() => _graph.Count;
         public bool Contains(Edge edge) => _graph.Contains(edge);
 
@@ -95,9 +90,7 @@ namespace LogicClasses
 
         public void Sort()
         {
-            Edge[] graph = _graph.ToArray();
-            MergeSort.Sort(graph);
-            _graph = new List<Edge>(graph);
+            _graph.Sort();
         }
 
         public IEnumerator<Edge> GetEnumerator()

@@ -1,7 +1,9 @@
 ﻿
+using System;
+
 namespace LogicClasses
 {
-    public class Edge
+    public class Edge : IComparable<Edge>
     {
         public int EdgeWeight { get; set; }
         public string VertexA { get; set; }
@@ -15,9 +17,10 @@ namespace LogicClasses
             EdgeWeight = weight;
         }
 
-        public Edge(int weight)
+        public int CompareTo(Edge other)
         {
-            EdgeWeight = weight;
+            if (other == null) return 1;
+            return EdgeWeight.CompareTo(other.EdgeWeight);
         }
     }
 }
